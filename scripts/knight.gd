@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var move_speed: float = 256.0 # velocidade de movimento
-@export var damage: int = 2
-@export var health: int = 10
+@export var damage: int = 1 # dano causado pelo personagem
+@export var health: int = 10 # vida do personagem
 
 @onready var animation: AnimationPlayer = get_node("Animation") 
 @onready var aux_animation: AnimationPlayer = get_node("AuxAnimation")
@@ -39,24 +39,24 @@ func get_direction() -> Vector2: # retorna a direcao pressionada no teclado
 
 func animate() -> void: # lida com as animações
 	if velocity.x < 0: # personagem andando para esquerda
-		texture.flip_h = true
+		texture.flip_h = true # flipa o personagem para a esquerda
 		attack_area.position.x = -58 # posiçao da area de ataque esquerda
 		
 	elif velocity.x > 0: # personagem andando para direita
-		texture.flip_h = false
+		texture.flip_h = false # flipa o personagem para a direita
 		attack_area.position.x = 58 # posiçao da area de ataque direita
 		
-	if velocity != Vector2.ZERO:
-		animation.play("run")
+	if velocity != Vector2.ZERO: # Significa que o personagem esta se movendo
+		animation.play("run") # roda animação de run (correr)
 		return
 		
-	animation.play("idle")
+	animation.play("idle") # roda a animação de idle (parado)
 
 
 func attack_handler() -> void:
-	if Input.is_action_just_pressed("attack") and can_attack:
-		can_attack = false
-		animation.play("attack")
+	if Input.is_action_just_pressed("attack") and can_attack: # se pressionada ação de atacar e puder atacar
+		can_attack = false # flag é configurada para false evitando bugs de congelar a animação
+		animation.play("attack") # roda animação de ataque
 
 
 # sinal emitido quando alguma animação termina
