@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0p14ly4hod44"]
+[gd_scene load_steps=16 format=3 uid="uid://d0p14ly4hod44"]
 
 [ext_resource type="Script" path="res://scripts/knight.gd" id="1_eb1vb"]
 [ext_resource type="Texture2D" uid="uid://ygym020knmty" path="res://assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_wmxgm"]
 [ext_resource type="Texture2D" uid="uid://bip8rbuub7wml" path="res://assets/Factions/Knights/Troops/Dead/Dead.png" id="2_plbts"]
+[ext_resource type="PackedScene" uid="uid://i2e26htpqv3y" path="res://scenes/management/dust.tscn" id="4_0ntkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48uhq"]
 size = Vector2(35, 20)
@@ -320,6 +321,7 @@ _data = {
 [node name="Knight" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_eb1vb")
+health = 15
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 26)
@@ -352,6 +354,10 @@ libraries = {
 
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="Dust" parent="." instance=ExtResource("4_0ntkt")]
+position = Vector2(0, 32)
+emitting = false
 
 [connection signal="animation_finished" from="Animation" to="." method="on_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="on_attack_area_body_entered"]

@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Tiny_Swords"
+run/main_scene="res://scenes/management/menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+transition_screen="*res://scenes/management/transition_screen.tscn"
 
 [display]
 

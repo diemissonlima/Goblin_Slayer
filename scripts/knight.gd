@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var damage: int = 1 # dano causado pelo personagem
 @export var health: int = 10 # vida do personagem
 
+@onready var dust: GPUParticles2D = get_node("Dust")
+
 @onready var animation: AnimationPlayer = get_node("Animation") 
 @onready var aux_animation: AnimationPlayer = get_node("AuxAnimation")
 @onready var texture: Sprite2D = get_node("Texture")
@@ -11,6 +13,14 @@ extends CharacterBody2D
 
 var can_attack: bool = true # flag que define se o personagem pode ou nao atacar
 var can_die: bool = false # flag que define se o personagem esta morto ou nao
+
+func _ready() -> void:
+	if transition_screen.player_health != 0:
+		health = transition_screen.player_health
+		return
+	
+	transition_screen.player_health = health
+
 
 func _physics_process(_delta: float) -> void: # funcao de update de fisica
 	if (
@@ -47,15 +57,18 @@ func animate() -> void: # lida com as animações
 		attack_area.position.x = 58 # posiçao da area de ataque direita
 		
 	if velocity != Vector2.ZERO: # Significa que o personagem esta se movendo
+		dust.emitting = true
 		animation.play("run") # roda animação de run (correr)
 		return
 		
 	animation.play("idle") # roda a animação de idle (parado)
+	dust.emitting = false
 
 
 func attack_handler() -> void:
 	if Input.is_action_just_pressed("attack") and can_attack: # se pressionada ação de atacar e puder atacar
 		can_attack = false # flag é configurada para false evitando bugs de congelar a animação
+		dust.emitting = false
 		animation.play("attack") # roda animação de ataque
 
 
@@ -66,17 +79,25 @@ func on_animation_finished(anim_name: String) -> void:
 			can_attack = true
 			
 		"death":
-			get_tree().reload_current_scene() # quando a animacao de morte terminar, reinicia a cena atual 
+			transition_screen.fade_in()
+			transition_screen.player_score = 0
+			transition_screen.player_health = 0
 
 
 # sinal que monitora quando algum objeto fisico entra em contato com a area de ataque
 func on_attack_area_body_entered(body) -> void: 
-	body.update_health(damage) # envia para funcao de atualizar o dano causado pelo body
+	body.update_health(damage) # envia para funcao de atualizar vida o dano causado pelo body
 	
 
 # funcao que atualiza a vida do personagem
 func update_health(value: int) -> void: # VALUE é o valor recebido da funcao "on_attack_area_body_entered"
 	health -= value # diminui a vida pelo valor recebido
+	
+	# variavel player_health da transition screen recebe a health
+	transition_screen.player_health = health
+	# envia para o script de level no método update_health a health do personagem
+	get_tree().call_group("level", "update_health", health)
+	
 	if health <= 0: # vida do personagem chega a zero
 		can_die = true # flag é configurada para true
 		animation.play("death") # roda a animação de morte

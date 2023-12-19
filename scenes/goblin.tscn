@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b84c2g6rh4qiy"]
+[gd_scene load_steps=16 format=3 uid="uid://b84c2g6rh4qiy"]
 
 [ext_resource type="Texture2D" uid="uid://b2tbkr2w5rtwm" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_4hkr8"]
 [ext_resource type="Script" path="res://scripts/goblin.gd" id="1_vmvmd"]
 [ext_resource type="Texture2D" uid="uid://bip8rbuub7wml" path="res://assets/Factions/Knights/Troops/Dead/Dead.png" id="2_ax4rn"]
+[ext_resource type="PackedScene" uid="uid://i2e26htpqv3y" path="res://scenes/management/dust.tscn" id="4_8vac1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldpn1"]
 size = Vector2(46, 20)
@@ -335,6 +336,7 @@ _data = {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vmvmd")
+health = 1
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
@@ -364,6 +366,10 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_lrrgv")
 }
+
+[node name="Dust" parent="." instance=ExtResource("4_8vac1")]
+position = Vector2(1, 29)
+emitting = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="on_detection_area_body_exited"]

@@ -9,10 +9,16 @@ var can_die: bool = false
 @export var move_speed: float = 192.0 # velocidade de movimento
 @export var distance_threshold: float = 60.0 # limite de distancia que precisa para o inimigo atacar
 @export var health: int = 3
+@export var score: int = 1
+
+@onready var dust: GPUParticles2D = get_node("Dust")
 
 @onready var animation: AnimationPlayer = get_node("Animation")
 @onready var aux_animation: AnimationPlayer = get_node("AuxAnimation")
 @onready var texture: Sprite2D = get_node("Texture")
+
+func _ready() -> void:
+	texture.flip_h = true
 
 func _physics_process(_delta: float) -> void:
 	if can_die: # se inimigo morrer
@@ -30,6 +36,7 @@ func _physics_process(_delta: float) -> void:
 	var distance: float = global_position.distance_to(player_ref.global_position)
 	
 	if distance < distance_threshold: # se distância for menor que limite de distância
+		dust.emitting = false
 		animation.play("attack") # executa animação de ataque
 		return
 	
@@ -51,6 +58,7 @@ func animate() -> void: # lida com as animações
 		texture.flip_h = false # flipa o inimigo para a direita
 	
 	if velocity != Vector2.ZERO: # Significa que o inimigo esta se movendo
+		dust.emitting = true
 		animation.play("run") # roda animação de run (correr)
 		return
 		
@@ -81,4 +89,8 @@ func on_detection_area_body_exited(_body) -> void:
 func on_animation_finished(anim_name: String) -> void:
 	match anim_name:
 		"death":
+			transition_screen.player_score += score
+			
+			get_tree().call_group("level", "increase_kill_count")
+			get_tree().call_group("level", "update_score", transition_screen.player_score)
 			queue_free()
