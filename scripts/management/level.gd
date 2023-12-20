@@ -3,10 +3,12 @@ extends Node2D
 @onready var interface: CanvasLayer = get_node("Interface")
 @onready var health_label: Label = interface.get_node("Health")
 @onready var score_label: Label = interface.get_node("Score")
+@onready var level_label: Label = interface.get_node("Level")
 
 var kill_count: int = 0 # contador de inimigos mortos
 
 @export var target_kill_count: int # quantidade necessaria de inimigos mortos
+@export var current_level: int
 @export var next_level_scene_path: String # caminho da proxima cena de nivel
 @export var current_level_scene_path: String # caminho da cena de nivel atual
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 	# envia para funcao update_health a vida do personagem armazenada na transition screen
 	update_health(transition_screen.player_health)
 	update_score(transition_screen.player_score)
+	set_level()
 	
 
 func update_health(new_health: int) -> void: # recebe a vida passada na funcao ready
@@ -25,6 +28,10 @@ func update_health(new_health: int) -> void: # recebe a vida passada na funcao r
 
 func update_score(new_score: int) -> void:
 	score_label.text = "Score: " + str(new_score)
+	
+
+func set_level() -> void:
+	level_label.text = "Level: " + str(current_level)
 
 
 func increase_kill_count() -> void: # funcao que incrementa o contador de kill

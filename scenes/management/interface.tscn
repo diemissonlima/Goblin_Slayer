@@ -30,3 +30,12 @@ offset_bottom = 97.0
 text = "Score: 0000"
 label_settings = SubResource("LabelSettings_bbhne")
 vertical_alignment = 1
+
+[node name="Level" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 99.0
+offset_right = 176.0
+offset_bottom = 136.0
+text = "Level: "
+label_settings = SubResource("LabelSettings_bbhne")
+vertical_alignment = 1

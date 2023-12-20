@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4b0gq0ect7uv"]
+
+[ext_resource type="Script" path="res://scripts/management/credits.gd" id="1_rmll2"]
+[ext_resource type="FontFile" uid="uid://djy4724ovjyv1" path="res://assets/Font/Kurland.ttf" id="1_s02du"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a2j4x"]
+font = ExtResource("1_s02du")
+font_size = 64
+outline_size = 4
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rmll2")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -92.5
+offset_right = 261.0
+offset_bottom = -21.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thanks for playing!"
+label_settings = SubResource("LabelSettings_a2j4x")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="Button" parent="." groups=["button"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -1.0
+offset_right = 137.5
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_s02du")
+theme_override_font_sizes/font_size = 32
+text = "Back to Main Menu"
+
+[node name="Quit" type="Button" parent="." groups=["button"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = 56.0
+offset_right = 137.5
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_s02du")
+theme_override_font_sizes/font_size = 32
+text = "Quit"

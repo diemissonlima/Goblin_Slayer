@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-const ATTACK_AREA: PackedScene = preload("res://scenes/enemy_attack_area.tscn")
 const OFFSET: Vector2 = Vector2(0, 31)
+const ATTACK_AREA: PackedScene = preload("res://scenes/enemy_attack_area.tscn")
 const AUDIO_TEMPLATE: PackedScene = preload("res://scenes/management/audio_template.tscn")
+const DINAMITE: PackedScene = preload("res://scenes/management/dinamite.tscn")
 
 var player_ref: CharacterBody2D = null # referencia ao personagem
 var can_die: bool = false
@@ -14,6 +15,7 @@ var can_die: bool = false
 
 @onready var dust: GPUParticles2D = get_node("Dust")
 
+@onready var spawn_position = $SpawnPosition
 @onready var animation: AnimationPlayer = get_node("Animation")
 @onready var aux_animation: AnimationPlayer = get_node("AuxAnimation")
 @onready var texture: Sprite2D = get_node("Texture")
@@ -44,12 +46,6 @@ func _physics_process(_delta: float) -> void:
 	velocity = direction * move_speed
 	move_and_slide()
 	animate()
-	
-
-func spawn_attack_area() -> void:
-	var attack_area = ATTACK_AREA.instantiate()
-	attack_area.position = OFFSET
-	add_child(attack_area)
 
 
 func animate() -> void: # lida com as animações
@@ -95,6 +91,21 @@ func on_animation_finished(anim_name: String) -> void:
 			get_tree().call_group("level", "increase_kill_count")
 			get_tree().call_group("level", "update_score", transition_screen.player_score)
 			queue_free()
+
+
+func spawn_attack_area() -> void:
+	var attack_area = ATTACK_AREA.instantiate()
+	attack_area.position = OFFSET
+	add_child(attack_area)
+
+
+func spawn_dinamite() -> void:
+	var dinamite = DINAMITE.instantiate()
+	if texture.flip_h:
+		dinamite.global_position = Vector2(22, 14)
+	else:
+		dinamite.global_position = Vector2(22, 14)
+	add_child(dinamite)
 
 
 func spawn_sfx(sfx_path: String) -> void:

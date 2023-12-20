@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd5byyyyi0kfv"]
+[gd_scene load_steps=10 format=3 uid="uid://cd5byyyyi0kfv"]
 
 [ext_resource type="Script" path="res://scripts/management/transition_screen.gd" id="1_3em5v"]
 [ext_resource type="FontFile" uid="uid://djy4724ovjyv1" path="res://assets/Font/Kurland.ttf" id="2_qbnbw"]
+[ext_resource type="AudioStream" uid="uid://hkdg28223my0" path="res://assets/bgm_e_sfx/music/Goblins_Dance_(Battle).wav" id="3_8afel"]
 
 [sub_resource type="Animation" id="Animation_0h4nk"]
 length = 0.001
@@ -135,5 +136,9 @@ text = "Wave Cleared"
 label_settings = SubResource("LabelSettings_rrsrm")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8afel")
+autoplay = true
 
 [connection signal="animation_finished" from="Animation" to="." method="on_animation_finished"]

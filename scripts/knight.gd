@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const AUDIO_TEMPLATE: PackedScene = preload("res://scenes/management/audio_template.tscn")
+
 @export var move_speed: float = 256.0 # velocidade de movimento
 @export var damage: int = 1 # dano causado pelo personagem
 @export var health: int = 10 # vida do personagem
@@ -13,6 +15,9 @@ extends CharacterBody2D
 
 var can_attack: bool = true # flag que define se o personagem pode ou nao atacar
 var can_die: bool = false # flag que define se o personagem esta morto ou nao
+
+var level: int
+var current_exp: int
 
 func _ready() -> void:
 	if transition_screen.player_health != 0:
@@ -87,7 +92,7 @@ func on_animation_finished(anim_name: String) -> void:
 # sinal que monitora quando algum objeto fisico entra em contato com a area de ataque
 func on_attack_area_body_entered(body) -> void: 
 	body.update_health(damage) # envia para funcao de atualizar vida o dano causado pelo body
-	
+
 
 # funcao que atualiza a vida do personagem
 func update_health(value: int) -> void: # VALUE é o valor recebido da funcao "on_attack_area_body_entered"
@@ -105,3 +110,9 @@ func update_health(value: int) -> void: # VALUE é o valor recebido da funcao "o
 		return
 	
 	aux_animation.play("hit") # toma hit mas nao morre roda a animação de hit
+
+
+func spawn_sfx(sfx_path: String) -> void:
+	var sfx = AUDIO_TEMPLATE.instantiate()
+	sfx.sfx_to_play = sfx_path
+	add_child(sfx)

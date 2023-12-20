@@ -309,6 +309,7 @@ sources/48 = SubResource("TileSetAtlasSource_2ssja")
 [node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_8h77h")
 target_kill_count = 2
+current_level = 1
 next_level_scene_path = "res://scenes/management/levels/level_2.tscn"
 current_level_scene_path = "res://scenes/management/levels/level_1.tscn"
 
@@ -331,12 +332,27 @@ layer_0/tile_data = PackedInt32Array(589841, 131072, 2, 524305, 131072, 1, 45876
 tile_set = SubResource("TileSet_ltn4r")
 cell_quadrant_size = 64
 format = 2
-layer_0/tile_data = PackedInt32Array(65543, 38, 0, 589833, 38, 0, 327698, 47, 1, 393218, 38, 0, 65550, 43, 0, 458766, 43, 0, 262152, 43, 0, 65546, 46, 1, 11, 65582, 0, 65547, 65582, 1, 131083, 65582, 2, 65548, 131118, 1, 524298, 46, 1, 458763, 65582, 0, 524299, 65582, 1, 589835, 65582, 2, 524300, 131118, 1, 262162, 47, 0)
+layer_0/tile_data = PackedInt32Array(65543, 38, 0, 589833, 38, 0, 327698, 47, 1, 393218, 38, 0, 65550, 43, 0, 458766, 43, 0, 262152, 43, 0, 262162, 47, 0)
+
+[node name="Knight" parent="." instance=ExtResource("5_ndp63")]
+position = Vector2(63, 237)
+
+[node name="RedGoblin" parent="." instance=ExtResource("6_ypwk6")]
+position = Vector2(990, -58)
+
+[node name="RedGoblin2" parent="." instance=ExtResource("6_ypwk6")]
+position = Vector2(619, 753)
 
 [node name="Decoration" type="Node2D" parent="."]
 
 [node name="Tree" parent="Decoration" instance=ExtResource("16_cjej8")]
-position = Vector2(738, 298)
+position = Vector2(751, 527)
+
+[node name="Tree3" parent="Decoration" instance=ExtResource("16_cjej8")]
+position = Vector2(425, 271)
+
+[node name="Tree2" parent="Decoration" instance=ExtResource("16_cjej8")]
+position = Vector2(738, 83)
 
 [node name="WaterRocks" parent="Decoration" instance=ExtResource("17_2da3j")]
 position = Vector2(-157, -96)
@@ -358,14 +374,5 @@ position = Vector2(174, -103)
 
 [node name="WaterRocks7" parent="Decoration" instance=ExtResource("17_2da3j")]
 position = Vector2(1279, 86)
-
-[node name="Knight" parent="." instance=ExtResource("5_ndp63")]
-position = Vector2(63, 237)
-
-[node name="Goblin" parent="." instance=ExtResource("6_ypwk6")]
-position = Vector2(929, 282)
-
-[node name="Goblin2" parent="." instance=ExtResource("6_ypwk6")]
-position = Vector2(494, -107)
 
 [node name="Interface" parent="." instance=ExtResource("7_na5jo")]

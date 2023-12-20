@@ -1,17 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://b84c2g6rh4qiy"]
+[gd_scene load_steps=16 format=3 uid="uid://ryyhwqjmmk4d"]
 
-[ext_resource type="Texture2D" uid="uid://b2tbkr2w5rtwm" path="res://assets/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="1_4hkr8"]
-[ext_resource type="Script" path="res://scripts/goblin.gd" id="1_vmvmd"]
-[ext_resource type="Texture2D" uid="uid://bip8rbuub7wml" path="res://assets/Factions/Knights/Troops/Dead/Dead.png" id="2_ax4rn"]
-[ext_resource type="PackedScene" uid="uid://i2e26htpqv3y" path="res://scenes/management/dust.tscn" id="4_8vac1"]
+[ext_resource type="Texture2D" uid="uid://bfbcyylqvv161" path="res://assets/Factions/Goblins/Troops/Torch/Purple/Torch_Purple.png" id="1_03wdm"]
+[ext_resource type="Script" path="res://scripts/purple_goblin.gd" id="1_hpwyt"]
+[ext_resource type="Texture2D" uid="uid://bip8rbuub7wml" path="res://assets/Factions/Knights/Troops/Dead/Dead.png" id="2_ty054"]
+[ext_resource type="PackedScene" uid="uid://i2e26htpqv3y" path="res://scenes/management/dust.tscn" id="4_p1kko"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldpn1"]
-size = Vector2(46, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auqld"]
+size = Vector2(48, 20)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hpcal"]
-radius = 200.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_i546x"]
+radius = 180.0
 
-[sub_resource type="Animation" id="Animation_cseya"]
+[sub_resource type="Animation" id="Animation_ow2f3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_4hkr8")]
+"values": [ExtResource("1_03wdm")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -62,7 +62,7 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_uxscg"]
+[sub_resource type="Animation" id="Animation_eja6l"]
 resource_name = "attack"
 length = 0.6
 tracks/0/type = "value"
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_4hkr8")]
+"values": [ExtResource("1_03wdm")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -127,22 +127,8 @@ tracks/4/keys = {
 "method": &"spawn_attack_area"
 }]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["res://assets/bgm_e_sfx/sfx/17_orc_atk_sword_1.wav"],
-"method": &"spawn_sfx"
-}]
-}
 
-[sub_resource type="Animation" id="Animation_261c4"]
+[sub_resource type="Animation" id="Animation_ymf7j"]
 resource_name = "death"
 length = 1.4
 tracks/0/type = "value"
@@ -155,7 +141,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ax4rn")]
+"values": [ExtResource("2_ty054")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -193,22 +179,8 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["res://assets/bgm_e_sfx/sfx/24_orc_death_spin.wav"],
-"method": &"spawn_sfx"
-}]
-}
 
-[sub_resource type="Animation" id="Animation_gei1y"]
+[sub_resource type="Animation" id="Animation_65kvj"]
 resource_name = "idle"
 length = 0.6
 loop_mode = 1
@@ -222,7 +194,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_4hkr8")]
+"values": [ExtResource("1_03wdm")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -261,7 +233,7 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6]
 }
 
-[sub_resource type="Animation" id="Animation_syuea"]
+[sub_resource type="Animation" id="Animation_3ald1"]
 resource_name = "run"
 length = 0.6
 loop_mode = 1
@@ -275,7 +247,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_4hkr8")]
+"values": [ExtResource("1_03wdm")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -313,34 +285,17 @@ tracks/3/keys = {
 "update": 1,
 "values": [7, 8, 9, 10, 11, 12]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": ["res://assets/bgm_e_sfx/sfx/25_orc_walk_stone_3.wav"],
-"method": &"spawn_sfx"
-}, {
-"args": ["res://assets/bgm_e_sfx/sfx/25_orc_walk_stone_3.wav"],
-"method": &"spawn_sfx"
-}]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwols"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4lae"]
 _data = {
-"RESET": SubResource("Animation_cseya"),
-"attack": SubResource("Animation_uxscg"),
-"death": SubResource("Animation_261c4"),
-"idle": SubResource("Animation_gei1y"),
-"run": SubResource("Animation_syuea")
+"RESET": SubResource("Animation_ow2f3"),
+"attack": SubResource("Animation_eja6l"),
+"death": SubResource("Animation_ymf7j"),
+"idle": SubResource("Animation_65kvj"),
+"run": SubResource("Animation_3ald1")
 }
 
-[sub_resource type="Animation" id="Animation_dtcv1"]
+[sub_resource type="Animation" id="Animation_tbe4u"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -355,7 +310,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_msgya"]
+[sub_resource type="Animation" id="Animation_xgsdi"]
 resource_name = "hit"
 length = 0.2
 tracks/0/type = "value"
@@ -368,65 +323,52 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.803922, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["res://assets/bgm_e_sfx/sfx/21_orc_damage_1.wav"],
-"method": &"spawn_sfx"
-}]
+"values": [Color(0.956863, 0.0901961, 0.113725, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrrgv"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5pkd2"]
 _data = {
-"RESET": SubResource("Animation_dtcv1"),
-"hit": SubResource("Animation_msgya")
+"RESET": SubResource("Animation_tbe4u"),
+"hit": SubResource("Animation_xgsdi")
 }
 
-[node name="RedGoblin" type="CharacterBody2D"]
+[node name="PurpleGoblin" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_vmvmd")
+script = ExtResource("1_hpwyt")
+health = 8
+score = 7
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, 31)
-shape = SubResource("RectangleShape2D_ldpn1")
-
-[node name="DetectionArea" type="Area2D" parent="."]
-visible = false
-position = Vector2(-1, 17)
-collision_layer = 0
-
-[node name="Collision" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, 11)
-shape = SubResource("CircleShape2D_hpcal")
+position = Vector2(2, 24)
+shape = SubResource("RectangleShape2D_auqld")
 
 [node name="Texture" type="Sprite2D" parent="."]
-texture = ExtResource("1_4hkr8")
+texture = ExtResource("1_03wdm")
 hframes = 7
 vframes = 5
 
+[node name="DetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+
+[node name="Collision" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(0, 24)
+shape = SubResource("CircleShape2D_i546x")
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_iwols")
+"": SubResource("AnimationLibrary_l4lae")
 }
 
 [node name="AuxAnimation" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_lrrgv")
+"": SubResource("AnimationLibrary_5pkd2")
 }
 
-[node name="Dust" parent="." instance=ExtResource("4_8vac1")]
-position = Vector2(1, 29)
+[node name="Dust" parent="." instance=ExtResource("4_p1kko")]
+position = Vector2(0, 28)
 emitting = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="on_detection_area_body_entered"]

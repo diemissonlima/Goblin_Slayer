@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bql27hjdxonja"]
+
+[ext_resource type="PackedScene" uid="uid://dyi64478dj1bl" path="res://scenes/management/levels/level_1.tscn" id="1_gxrfs"]
+[ext_resource type="PackedScene" uid="uid://b84c2g6rh4qiy" path="res://scenes/goblin.tscn" id="2_0shob"]
+[ext_resource type="PackedScene" uid="uid://ryyhwqjmmk4d" path="res://scenes/purple_goblin.tscn" id="3_bhscu"]
+[ext_resource type="PackedScene" uid="uid://bs5tdcv768yja" path="res://scenes/yellow_goblin.tscn" id="4_mybpn"]
+
+[node name="Level" instance=ExtResource("1_gxrfs")]
+target_kill_count = 7
+next_level_scene_path = "res://scenes/management/credits.tscn"
+current_level_scene_path = "res://scenes/management/levels/level_5.tscn"
+
+[node name="RedGoblin3" parent="." index="4" instance=ExtResource("2_0shob")]
+position = Vector2(1020, 307)
+
+[node name="PurpleGoblin" parent="." index="5" instance=ExtResource("3_bhscu")]
+position = Vector2(491, -141)
+
+[node name="PurpleGoblin2" parent="." index="6" instance=ExtResource("3_bhscu")]
+position = Vector2(1380, 329)
+
+[node name="YellowGoblin" parent="." index="7" instance=ExtResource("4_mybpn")]
+position = Vector2(1039, 603)
+
+[node name="YellowGoblin2" parent="." index="8" instance=ExtResource("4_mybpn")]
+position = Vector2(713, 301)
